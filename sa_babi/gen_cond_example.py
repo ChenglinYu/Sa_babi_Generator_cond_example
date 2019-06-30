@@ -365,6 +365,7 @@ def _insert_referential_dummy(lines, dummy_vars, body_tags,
                    setup_lines[buf_dec_idx:])
 
     # 至此，setup_lines内部3条语句的相对位置已确定
+    # 干扰组合的setup_lines和控制流无关，因此不能放在控制流里面，所以要么放在控制流行的前面，要么放在控制流行的后面。
 
     # whether these setup lines go before the control flow lines
     before_control_flow = random.choice([True, False])
