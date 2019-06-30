@@ -24,7 +24,7 @@ destination_src_directory
 
 ## 方式2： PyCharm parameter settings
 
-input those parameters in pycharm, and then run generate.py
+input those parameters above in pycharm, and then run gen_cond_example.py
 
 ## 方式3：execute .sh file in terminal
 
