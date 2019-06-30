@@ -8,8 +8,6 @@ import string
 import sys
 import json
 
-from pycallgraph.output import GraphvizOutput
-from pycallgraph import PyCallGraph
 
 import cond_template as templates
 
@@ -587,12 +585,5 @@ def _generate_file_name(instance_str):
 
 
 if __name__ == '__main__':
-    graphviz = GraphvizOutput()
-
-    graphviz.output_file = 'gen_cond_example.png'
-
-    # with PyCallGraph(output=graphviz):
-    #     RET = main(_get_args())
-    #     sys.exit(RET)
     RET = main(_get_args())
     sys.exit(RET)
