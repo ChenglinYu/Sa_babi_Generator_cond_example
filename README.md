@@ -2,13 +2,21 @@
 ## 方式1：execute command in terminal
 
 ```bash
-python generate.py
+mkdir work_directory
+```
+
+```bash
+cd sa_babi
+```
+
+```bash
+python gen_cond_example.py
 destination_src_directory
 -seed seed_value
 -num_instances instance_num
 -metadata_file metadata_file_path
 ```
-
+- destination_src_directory是work_directory的绝对路径
 - destination_src_directory: 代码实例输出文件夹
 - seed_value： 随机种子,e.g. 0
 - instance_num e.g. 32(which is the amount of c files we will generate)
