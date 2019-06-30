@@ -1,8 +1,11 @@
 # 3 methods to generate COND examples
 ## 方式1：execute command in terminal
+```bash
+cd sa_babi
+```
 
 ```bash
-python generate.py
+python gen_cond_example.py
 destination_src_directory
 -seed seed_value
 -num_instances instance_num
