@@ -38,27 +38,33 @@
 # DM18-0995
 #
 
-
+# 如果参数个数不等于2，则给出help message并退出
 if [ "$#" -ne 2 ]; then
     echo "Usage: sa_gen_cfiles.sh <working_dir> <num_instances>"
     echo "e.g.: sa_gen_cfiles.sh data 10"
     exit
 fi
 
-working_dir=$(realpath $1)
-num_instances=$2
-SA_SEED="${SA_SEED:--1}" #如果SA_SEED为空，则用-1来进行替换
+working_dir=$(realpath $1) # 获取输出文件夹路径
+num_instances=$2 # 获取实例个数
+SA_SEED="${SA_SEED:--1}" #如果SA_SEED为空，则将SA_SEED的值设置为-1
+echo SA_SEED
 
-mkdir -p $working_dir/src #在working目录下创建src文件夹 反斜杠使得行继续，命令继续输入
+mkdir -p $working_dir/src # 创建$working_dir/src
+
+# DATA_DIR作为环境变量传入，并使用服务执行Python命令
 DATA_DIR=$working_dir docker-compose run --rm sababi \
-    python /sa_babi/generate.py \
+    python /sa_babi/gen_cond_example.py \
     /mnt/data/src \
     -seed $SA_SEED \
     -num_instances $num_instances \
     -metadata_file /mnt/data/manifest.json
+
 # SA_SEED = 0
 # mkdir -p $working_dir/src 可以手工创建
 # DATA_DIR = working/sa-train-1000
-# docker-compose run --rm sababi 启动container，remove container after run
+# docker-compose run --rm sababi 启动sababi服务，并且将DATA_DIR环境变量传入
 # python /sa_babi/generate.py /mnt/data/src -seed 0 -num_instances 1000 -metadata_file /mnt/data/manifest.json
 # docker-compose是跟docker-compose.yml文件联系起来的，所以必须要输入DATA_DIR命令
+
+# 明天接着搞吧，算是把docker搞懂了。TODO

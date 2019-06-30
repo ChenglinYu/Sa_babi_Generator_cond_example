@@ -39,6 +39,7 @@
 """sa_tag.py: defines the Tag class for SA-bAbI"""
 import enum
 
+
 class Tag(enum.Enum):
     """Tags for each line of each instance representing buffer write safety
 
