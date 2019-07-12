@@ -66,5 +66,3 @@ DATA_DIR=$working_dir docker-compose run --rm sababi \
 # docker-compose run --rm sababi 启动sababi服务，并且将DATA_DIR环境变量传入
 # python /sa_babi/generate.py /mnt/data/src -seed 0 -num_instances 1000 -metadata_file /mnt/data/manifest.json
 # docker-compose是跟docker-compose.yml文件联系起来的，所以必须要输入DATA_DIR命令
-
-# 明天接着搞吧，算是把docker搞懂了。TODO
