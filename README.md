@@ -49,7 +49,9 @@ python sa_babi/gen_cond_example.py work_directory -seed 0 -num_instances 10 -met
 
 ### result
 
-After you execute these commands, you will get **10** c files in **working_directory/src** and **manifest.json** which stores raw labels of program in line level in **working_directory**.
+After you execute these commands, you will get **10** c files and **manifest.json** in **working_directory**. 
+
+**manifest.json** stores raw labels of program in line level in **working_directory**.
 
 We randomly have a look one file,  **4a2405d586.c**
 
