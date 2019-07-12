@@ -22,13 +22,13 @@
 # Instructions
 ## Method 1: execute command in terminal
 
-在项目根目录下创建代码实例输出文件夹
+在项目根目录下创建**代码实例输出文件夹**
 
 ```bash
 mkdir work_directory
 ```
 
-运行gen_cond_example.py生成代码实例
+运行*gen_cond_example.py*生成代码实例
 ```bash
 python sa_babi/gen_cond_example.py
 destination_src_directory
@@ -36,10 +36,10 @@ destination_src_directory
 -num_instances instance_num
 -metadata_file metadata_file_path
 ```
-- destination_src_directory是work_directory的绝对路径
-- seed_value： 随机种子。e.g. 0
-- instance_num e.g. 32(which is the amount of c files we will generate)
-- metadata_file_path. e.g. **manifest.json**(**you'd better not change the file's name**, but you can change its parent directory)
+- **destination_src_directory**是work_directory的绝对路径
+- **seed_value**： 随机种子。e.g. 0
+- **instance_num** e.g. 32(which is the amount of c files we will generate)
+- **metadata_file_path**. e.g. **manifest.json**(**you'd better not change the file's name**, but you can change its parent directory)
 
 For example, in my Mac machine, I just type the following code:
 
@@ -159,7 +159,7 @@ manifest.json中有关4a2405d586.c的部分如下：
 ],
 ```
 
-manifest.json记录了每个代码实例每一行的标签。
+以上代码表明：**manifest.json记录了每个代码实例每一行的标签。**
 
 ### note
 
