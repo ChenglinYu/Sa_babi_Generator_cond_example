@@ -53,6 +53,8 @@ After you execute these commands, you will get **10** c files and **manifest.jso
 
 **manifest.json** stores raw labels of program in line level in **working_directory**.
 
+You can look up the details in the *example* branch.
+
 We randomly have a look one file,  **4a2405d586.c**
 
 ```c
