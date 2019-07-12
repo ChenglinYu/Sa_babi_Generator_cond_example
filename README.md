@@ -190,7 +190,9 @@ SA_SEED=0 && ./sa_gen_cfiles.sh working_directory 10
 ```
 
 
+## 生成器构造思路
 
+生成器的具体构造思路请参见https://blog.csdn.net/ChenglinBen/article/details/94122037
 
 
 
