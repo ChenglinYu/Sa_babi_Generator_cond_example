@@ -41,6 +41,132 @@ destination_src_directory
 - instance_num e.g. 32(which is the amount of c files we will generate)
 - metadata_file_path. e.g. **manifest.json**(**you'd better not change the file's name**, but you can change its parent directory)
 
+For example, in my Mac machine, I just type the following code:
+
+```shell
+python sa_babi/gen_cond_example.py work_directory -seed 0 -num_instances 10 -metadata_file work_directory/manifest.json
+```
+
+### 结果
+
+After you execute these commands, you will get **10** c files in **working_directory/src** and **manifest.json** which stores raw labels of program in line level in **working_directory**.
+
+The result is as follows:
+
+![image-20190712133440243](https://ws4.sinaimg.cn/large/006tNc79gy1g4wzx2zxhaj30d80k0q53.jpg )
+
+We have a loot at the first one: **4a2405d586.c**
+
+```c
+#include <stdlib.h>           // Tag.OTHER
+int main()                    // Tag.OTHER
+{                             // Tag.OTHER
+    int entity_1;             // Tag.BODY
+    int entity_7;             // Tag.BODY
+    char entity_0[24];        // Tag.BODY
+    entity_7 = 75;            // Tag.BODY
+    char entity_9[86];        // Tag.BODY
+    int entity_8;             // Tag.BODY
+    int entity_5;             // Tag.BODY
+    char entity_4[90];        // Tag.BODY
+    entity_1 = 86;            // Tag.BODY
+    entity_5 = 45;            // Tag.BODY
+    entity_8 = 89;            // Tag.BODY
+    entity_4[entity_1] = 'A'; // Tag.BUFWRITE_TAUT_SAFE
+    if(entity_5 < entity_7){  // Tag.BODY
+    entity_5 = 81;            // Tag.BODY
+    } else {                  // Tag.BODY
+    entity_0[entity_8] = 'l'; // Tag.BUFWRITE_TAUT_UNSAFE
+    entity_5 = 79;            // Tag.BODY
+    }                         // Tag.BODY
+    entity_9[entity_5] = '8'; // Tag.BUFWRITE_COND_SAFE
+    return 0;                 // Tag.BODY
+}                             // Tag.OTHER
+```
+
+**manifest.json**
+
+```json
+{
+  "working_dir": "/Users/chenglinyu/PycharmProjects/SystemExperiment/Sa_babi_all/Sa_babi_Generator_cond_example/work_directory",
+  "num_instances": 10,
+  "tags": {
+    "d97aec156b.c": [
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      0
+    ],
+    "77ec1d72c7.c": [
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      .
+      .
+    ]
+    .
+    .
+    ]
+  }
+}
+```
+
+其中有关4a2405d586.c的部分如下：
+
+```json
+"4a2405d586.c": [
+  0,
+  0,
+  0,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  4,
+  1,
+  1,
+  1,
+  5,
+  1,
+  1,
+  2,
+  1,
+  0
+],
+```
+
+manifest.json记录了每个代码实例每一行的标签。
+
+### note
+
+为了保证后续实验的**可重复性**，建议使用**特定种子**产生特定的数据集。
+
+例如，将训练集的随机种子设置为**0**，将测试集的种子设置为**1**.
+
 ## Method 2: PyCharm parameter settings
 
 input those parameters above in pycharm, and then run **gen_cond_example.py**
@@ -63,38 +189,7 @@ docker-compose build
 SA_SEED=0 && ./sa_gen_cfiles.sh working_directory 10
 ```
 
-## 结果
 
-After you execute these commands, you will get **10** c files in **working_directory/src** and **manifest.json** which stores raw labels of program in line level in **working_directory**.
-
-4c0413d129.c是其中的1个代码实例，代码如下：
-
-```c
-#include <stdlib.h>           // Tag.OTHER
-int main()                    // Tag.OTHER
-{                             // Tag.OTHER
-    char entity_2[73];        // Tag.BODY
-    int entity_5;             // Tag.BODY
-    int entity_8;             // Tag.BODY
-    char entity_4[70];        // Tag.BODY
-    int entity_1;             // Tag.BODY
-    entity_1 = 37;            // Tag.BODY
-    entity_8 = 30;            // Tag.BODY
-    entity_5 = 90;            // Tag.BODY
-    if(entity_1 < entity_5){  // Tag.BODY
-    entity_1 = 15;            // Tag.BODY
-    } else {                  // Tag.BODY
-    entity_2[entity_8] = 'i'; // Tag.BUFWRITE_TAUT_SAFE
-    entity_1 = 70;            // Tag.BODY
-    }                         // Tag.BODY
-    entity_4[entity_1] = 'l'; // Tag.BUFWRITE_COND_SAFE
-    return 0;                 // Tag.BODY
-}                             // Tag.OTHER
-```
-
-note: 为了保证后续实验的**可重复性**，建议使用特定种子产生特定的数据集。
-
-例如，将训练集的随机种子设置为**0**，将测试集的种子设置为**1**.
 
 
 
