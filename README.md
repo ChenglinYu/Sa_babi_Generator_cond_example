@@ -47,15 +47,11 @@ For example, in my Mac machine, I just type the following code:
 python sa_babi/gen_cond_example.py work_directory -seed 0 -num_instances 10 -metadata_file work_directory/manifest.json
 ```
 
-### 结果
+### result
 
 After you execute these commands, you will get **10** c files in **working_directory/src** and **manifest.json** which stores raw labels of program in line level in **working_directory**.
 
-The result is as follows:
-
-![image-20190712133440243](https://ws4.sinaimg.cn/large/006tNc79gy1g4wzx2zxhaj30d80k0q53.jpg )
-
-We have a loot at the first one: **4a2405d586.c**
+We randomly have a look one file,  **4a2405d586.c**
 
 ```c
 #include <stdlib.h>           // Tag.OTHER
@@ -128,7 +124,7 @@ int main()                    // Tag.OTHER
 }
 ```
 
-其中有关4a2405d586.c的部分如下：
+manifest.json中有关4a2405d586.c的部分如下：
 
 ```json
 "4a2405d586.c": [
